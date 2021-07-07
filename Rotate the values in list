@@ -1,0 +1,17 @@
+val = [1,2,3,4,5]
+rotate = 4
+print(val[-rotate:] + val[0:-rotate])
+
+###########################################
+
+import copy
+y = copy.deepcopy(val)
+temp = 1
+for i in range(len(val),0,-1):
+    x = val[i-1]
+    y.remove(x)
+    y = [x]+y
+    temp +=1
+    if temp > rotate:
+        break
+print(y)
