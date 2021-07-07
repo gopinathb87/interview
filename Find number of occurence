@@ -1,0 +1,29 @@
+op = """big black bug bit a big black dog on his big black nose"""
+op = op.split(" ")
+
+#Method1 : 
+
+from collections import Counter
+dict2 = dict(Counter(op))
+print(dict2)
+
+#Method2 :  
+dict1 = {}
+for i in op:
+    if i in dict1.keys():
+        dict1[i] += 1
+    else:
+        dict1[i] = 1
+print(dict1)
+
+
+
+#############################################################################
+
+str1 = """big black bug bit a big black dog on his big black nose"""
+str1 = str1.split(" ")
+
+my_dict = {}
+for letter in str1:
+    my_dict[letter] = my_dict.get(letter, 0) + 1
+print(my_dict)
