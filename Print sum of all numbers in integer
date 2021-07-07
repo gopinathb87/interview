@@ -1,0 +1,12 @@
+def count (num):
+    j=0
+    if len(str(num)) == 1:
+        print(num)
+    else:
+        for i in str(num):
+            j += int(i)
+        count(j)
+count(191)
+
+#Print sum of all numbers in integer 
+#output 2 
