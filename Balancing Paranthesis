@@ -1,0 +1,21 @@
+#Input : {[]{()}}
+#Output : Balanced
+
+#Input : [{}{}(]
+#Output : Unbalanced
+
+from collections import Counter
+inp = "[{}{})(]"
+
+mapp = {"{":"}","[":"]","(":")"}
+Balanced = "Balanced"
+if not len(inp)%2:
+    x = dict(Counter(inp))
+    for i in x.keys():
+        if i in mapp.keys():
+            val = mapp[i]
+            if x[i] != x[val]:
+                Balanced = "Unbalanced"
+    print(Balanced)
+else:
+    print("Unbalanced")
