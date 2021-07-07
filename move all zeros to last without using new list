@@ -1,0 +1,11 @@
+#Output [1, 2, 3, 4, 5, 4, 2, 4, 9, 0, 0, 0]
+
+
+lst =  [1,2,3,4,5,0,4,0,2,4,9,0]
+
+for i in range(0,len(lst)):
+    if lst[i] == 0:
+        lst.pop(i)
+        lst.append(0)
+print(lst)
+        
