@@ -1,0 +1,13 @@
+def deco(func):
+    def inner(x,y):
+        print("i'm doing addition")
+        x = func(x,y)
+        print(x+y)
+        print("i'm done with addtion")
+    return inner
+
+@deco
+def add(a,b):
+    return (a+b)
+
+add(1,2)
