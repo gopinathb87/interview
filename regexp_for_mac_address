@@ -1,0 +1,4 @@
+x = "aa-00:ff:22:43:ac"
+import re
+mat = re.match("([0-9A-Fa-f]{2}(:|-)){5}([0-9A-Fa-f]{2})",x)
+print(mat)
