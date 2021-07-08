@@ -1,0 +1,15 @@
+x = 0
+y = 1
+num = 12
+v = []
+if num<=0:
+    print("Only Positive integers")
+elif num == 1:
+    v = [0]
+else:
+    while num > 0:
+        v.append(x)
+        x,y = y,x+y
+        num -= 1
+print(v)
+    
