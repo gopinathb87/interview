@@ -1,0 +1,7 @@
+i = ['1','2','3','4','5','6','7']
+
+nex = iter(i)
+print(nex)
+
+for i in range(len(i)):
+   print(next(nex))
