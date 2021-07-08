@@ -1,0 +1,7 @@
+x = "123ssdr456ffff"
+
+val = "".join(filter(lambda s: s.isdigit(),x))
+print(val)
+
+val = "".join(map(lambda s: s.upper(),x))
+print(val)
