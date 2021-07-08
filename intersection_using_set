@@ -1,0 +1,9 @@
+DaysA = ["Mon","Tue","Wed"]
+DaysB = ["Wed","Thu","Fri","Sat","Sun"]
+AllDays = set(DaysA)|set(DaysB)
+print(list(AllDays))
+
+DaysA = set(["Mon","Tue","Wed"])
+DaysB = set(["Wed","Thu","Fri","Sat","Sun"])
+AllDays = DaysB- DaysA
+print(AllDays)
