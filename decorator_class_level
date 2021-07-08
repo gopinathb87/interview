@@ -1,0 +1,16 @@
+class MyDecorator:
+    def __init__(self, function):
+        self.function = function
+      
+    def __call__(self, *args, **kwargs):
+        print("Test Commit ")
+        x = self.function(*args, **kwargs)
+        #print(x)
+      
+  
+# adding class decorator to the function
+@MyDecorator
+def function(name, message ='Hello'):
+    print("{}, {}".format(message, name))
+  
+function("geeks_for_geeks", "hello")
