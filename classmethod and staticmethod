@@ -1,0 +1,62 @@
+import datetime
+
+class Employee():
+     num_of_emps = 0
+     raise_amt =1.04 
+     
+     def __init__(self, first, last, pay):
+         self.first = first
+         self.last = last
+         self.pay = int(pay)
+         self.email = self.first+self.last+"@gmail.com"
+         
+     @property   
+     def full_name(self):
+         """
+         Propety decorator will help us to use def as a variable while calling 
+         eg : print(new_emp_1.full_name)
+         """
+         return ('{} {}'.format(self.first,self.last))
+         
+     def apply_raise(self):
+         self.pay = int(self.pay * self.raise_amt)
+         
+     @classmethod
+     def set_raise_amt(cls, amount):
+         """
+         changing the class variable using class method
+         """
+         cls.raise_amt = amount
+         
+     @classmethod
+     def from_string(cls, emp_str):
+         """
+         returning class object instead creating it outside with arguments
+         """
+         first, last, pay = emp_str.split("-")
+         return cls(first, last, int(pay))
+         
+     @staticmethod
+     def is_workday(day):
+         """
+         its like normal method outside class will not make any difference
+         """
+         if day.weekday() == 6 or day.weekday() == 7:
+             return False
+         return True
+
+         
+emp1 = Employee("Gopi", "Bala", "10000")
+
+emp1.set_raise_amt(1.05)
+
+emp_str1 = "Ananya-shri-20000"
+
+new_emp_1 = Employee.from_string(emp_str1)
+new_emp_1.apply_raise()
+print(new_emp_1.email)
+print(new_emp_1.pay)
+print(new_emp_1.full_name)
+
+mydate = datetime.date(2021, 7, 10)
+print(Employee.is_workday(mydate))
