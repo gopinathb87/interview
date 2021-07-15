@@ -1,0 +1,16 @@
+#Remove nth occurence of the given word
+list = ["a","b","c","b","a","b"]
+word = "b"
+n = 3
+count = 0
+for i,j in enumerate(list):
+    print(j)
+    if word == j:
+        count +=1
+        if count == n:
+            list.pop(i)
+            break
+print(list)
+            
+    
+
