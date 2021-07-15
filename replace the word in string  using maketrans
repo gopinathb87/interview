@@ -1,0 +1,5 @@
+txt = """Hello Sam! asdadsak das adsa gopi gopi gopi gopi gopi gopi"""
+
+mytable = txt.maketrans("gopi", "ipog")
+
+print(txt.translate(mytable))
