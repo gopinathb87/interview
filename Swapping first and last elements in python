@@ -1,0 +1,11 @@
+# Swapping first and last elements in python    
+a = [1,2,3,4,5,6,7]
+
+# Method 1
+a[0], a[-1] = a[-1],a[0]
+print(a)
+
+# Method2
+start,*middle, last= a
+a = last, *middle, start
+print(a)
