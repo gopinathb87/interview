@@ -1,0 +1,38 @@
+list = [2,1,3,4,5]
+# multiply all list elements 
+final = 1
+for i in list:
+    final *=i
+print(final)
+
+import numpy
+res = numpy.prod(list)
+print(res)
+
+
+
+# find higest and lowest element from list 
+# Method1
+max = max(list)
+min = min(list)
+print(max)
+print(min)
+
+# Method2
+list.sort()
+min = list[0]
+max = list[-1]
+print(max)
+print(min)
+
+
+# Method3
+max=list[0]
+min=list[0]
+for i in list:
+    if i > max:
+        max = i
+    if i < min:
+        min = i
+print(max)
+print(min)
