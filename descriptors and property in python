@@ -1,0 +1,87 @@
+class Circle():
+    PI = 3.14
+    def __init__(self, radius):
+        self.radius = radius
+        self.circum = 2*radius*self.PI
+
+mycircle = Circle(2)
+mycircle.radius = 3 
+
+#Can't able to access the circum for radius 3 which is changed after creating object
+print(mycircle.circum) 
+
+#################################################################################
+class Circle():
+    PI = 3.14
+    def __init__(self, radius):
+        self.radius = radius
+    @property
+    def circum(self):
+        return 2*self.radius*self.PI
+
+mycircle = Circle(2)
+mycircle.radius = 3 
+
+#As introduced the property method we can able to get the op for changed radius 
+print(mycircle.circum)
+
+# Python program to explain property() function 
+    
+# Alphabet class 
+class Alphabet: 
+    def __init__(self, value): 
+        self._value = value 
+            
+    # getting the values 
+    def getValue(self): 
+        print('Getting value') 
+        return self._value 
+            
+    # setting the values 
+    def setValue(self, value): 
+        print('Setting value to ' + value) 
+        self._value = value 
+            
+    # deleting the values 
+    def delValue(self): 
+        print('Deleting value') 
+        del self._value 
+        
+    value = property(getValue, setValue, delValue, ) 
+    
+# passing the value 
+x = Alphabet('GeeksforGeeks') 
+print(x.value) 
+    
+x.value = 'GfG'
+    
+del x.value 
+
+
+# Descriptor is any object that implementents at least one of the methods __get__ , __set__, __delete__.
+# Data Descriptor implement both __get__ , __set__. Implementing only __get__ makes you non-data descriptor.
+
+#https://www.geeksforgeeks.org/descriptor-in-python/
+
+class Descriptor(object):
+  
+    def __init__(self, name =''):
+        self.name = name
+  
+    def __get__(self, obj, objtype):
+        return "{}for{}".format(self.name, self.name)
+  
+    def __set__(self, obj, name):
+        if isinstance(name, str):
+            self.name = name
+        else:
+            raise TypeError("Name should be string")
+          
+class SimpleClass(object):
+    name = Descriptor()
+    
+g = SimpleClass()
+g.name = "Test"
+print(g.name)
+g.name = "GOPI"
+print(g.name)
