@@ -1,0 +1,37 @@
+import copy 
+
+a = "10.0.0.1"
+x = [0,1]
+y = x 
+b = a
+print (x)
+print (y)
+
+print(id(x[0]))
+print(id(y[0]))
+
+
+print (a)
+print (b)
+
+print(id(a[0]))
+print(id(b[0]))
+
+
+y = [0,8]
+b = "20.0.0.1"
+
+
+print (x)
+print (y)
+
+print(id(x[0]))
+print(id(y[0]))
+
+
+
+print (a)
+print (b)
+
+print(id(a[0]))
+print(id(b[0]))
