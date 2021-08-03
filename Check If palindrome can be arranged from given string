@@ -1,0 +1,29 @@
+str1 = "carracee"
+#str1 = "carracec"
+#racecar
+
+#Method1 
+"""dict1 = {}
+for i in str1:
+    print(dict1.keys())
+    if i in dict1.keys():
+        dict1[i] += 1 
+    else:
+        dict1[i] = 1"""
+
+#print(dict1)
+
+import collections
+
+dict1 = collections.Counter(str1)
+
+err1 = 0
+for i in dict1:
+    if dict1[i] %2 :
+        err1 += 1
+        
+if err1 > 1:
+    print("No Palindrome")
+else:
+    print("Palindrome")
+    
