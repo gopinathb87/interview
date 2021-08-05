@@ -1,0 +1,48 @@
+s = 'gopi#$%nath$%#$gopi'
+
+print(s[::-1])
+
+out = "htan#$%ipo$g"
+
+
+###################Method 1 Not working 100% #########################
+
+import re
+
+list1 = []
+list2 = []
+
+for i in range(len(s)-1,-1,-1):
+    mat = re.match("[a-zA-Z]",s[i])
+    print(s[i])
+    if mat:
+        list1.extend(list2[::-1])
+        list1.append(s[i])
+        list2 = []
+    else:
+        list2.append(s[i])
+          
+print("".join(list1))
+
+###################Method 2#########################
+def split(word):
+    return [char for char in word]  
+
+x = split(s)
+
+list3 = []
+dict2 = {}
+
+for i in range(len(s)-1,-1,-1):
+    if s[i].isalpha():
+        list3.append(s[i])
+    else:
+        dict2[i] = s[i]
+
+dict2 = dict(sorted(dict2.items()))
+
+for i in dict2:
+    list3.insert(i,dict2[i])
+    
+print(s)
+print("".join(list3))
