@@ -1,20 +1,20 @@
 from multiprocessing import Process
 import time
-def method1():
-    print ("in method1")
+def method1(x):
+    print ("in method1 {}".format(x))
     time.sleep(5)
     print ("in method1")
 
-def method2():
-    print ("in method2")
+def method2(x):
+    print ("in method2 {}".format(x))
     time.sleep(5)
     print ("in method2")
     
 begin = time.time()
 
-p1 = Process(target=method1)
-p2 = Process(target=method2)# create a process object p1
-p1.start()                   # starts the process p1
+p1 = Process(target=method1, args=(10,))
+p2 = Process(target=method2, args=(20,))
+p1.start()                   
 p2.start()
 p1.join()
 p2.join()
@@ -22,3 +22,6 @@ end = time.time()
   
 # total time taken
 print(f"Total runtime of the program is {end - begin}")
+
+
+#https://stackoverflow.com/questions/22176780/concurrently-run-two-functions-that-take-parameters-and-return-lists
