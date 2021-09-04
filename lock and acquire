@@ -1,0 +1,77 @@
+
+import multiprocessing
+import sys
+import time
+
+
+manager = multiprocessing.Manager()
+failed_linenumbers = manager.list()
+
+def test_lock():
+    # initial value (in shared memory)
+    flag = multiprocessing.Value('i', 1)
+    retval1 = multiprocessing.Value('i', 0)
+    retval2 = multiprocessing.Value('i', 0)
+
+    lock = multiprocessing.Lock()
+
+    #Create  process for warm shutdown
+    proc1 = multiprocessing.Process( target=proc_1, args=(flag, lock, retval1) )
+    proc1.start()
+
+    #Create  process for cold bootup
+    proc2 = multiprocessing.Process( target=proc_2, args=(flag, lock, retval2) )
+    proc2.start()
+
+    #Wait.. till the new process completes
+    proc1.join()
+    proc2.join()
+
+
+
+def proc_1(flag, lock, retval1):
+
+    lock.acquire()
+    print( "Proc-1: acquired the lock........... " )
+
+    for i in range(5):
+      time.sleep(i)
+      print("Proc1 %i" % i)
+
+    flag.value = 2
+    print( "Proc-1: Releasing the lock........... " )
+    lock.release()
+
+    for j in range(1,100):
+        time.sleep(1)
+        lock.acquire()
+        if flag.value == 3:
+            flag.value = 4
+            lock.release()
+            break
+        lock.release()
+
+    print( "Proc-1: lock acquired again".format(flag.value) )
+
+    
+
+def proc_2(flag, lock, retval2):
+    #Wait till proc-1 initiates warmboot
+    for j in range(1,100):
+        time.sleep(1)
+        lock.acquire()
+        if flag.value == 2:
+            flag.value = 3
+            break
+        lock.release()
+    
+
+    print( "Proc-2: lock acquired. " )
+    for i in range(5):
+      time.sleep(i)
+      print("Proc2 %i" % i)
+    
+    print( "Proc-2: Releasing the lock ........ " )
+    lock.release()
+
+test_lock()
