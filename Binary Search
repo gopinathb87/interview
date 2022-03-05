@@ -3,21 +3,52 @@
 lis = [1,2,3,4,6,7,8,9]
 
 
-def bin_search(num, find_num, low, high,max=0):
+def bin_search(num, find_num, low, high):
     
     if high >= low:
       mid = (low + high) // 2 
-      max = num[mid]
       if num[mid] == find_num:
         return mid
       elif num[mid] < find_num:
         low = mid + 1 
-        return bin_search(num,find_num,low, high,num[mid])
+        return bin_search(num,find_num,low, high)
       else:
         high = mid -1
-        return bin_search(num,find_num,low, high,num[mid])
+        return bin_search(num,find_num,low, high)
     else:
       return low
 
 
 print(bin_search(lis,5,0,8))
+
+
+
+
+
+### Find first and last occurance of the target (return index of first and last.)
+def bin_search(num,find_num,first=True):
+    
+    low = 0
+    high = len(num) - 1
+    while low <= high:
+        middle = low + (high-low) // 2
+        if num[middle] == find_num:
+            an = middle
+            if first:
+                high = middle -1
+            else:
+                low = middle +1
+        elif num[middle] < find_num:
+            low = middle +1
+        else:
+            high = middle -1
+    
+    return an
+
+
+x = [1,2,3,4,4,4,4,4,4,4,5,6,7,8,9]
+ans = [-1,-1]
+
+ans[0] = bin_search(x,4,first=True)
+ans[1] = bin_search(x,4,first=False)
+print(ans)
