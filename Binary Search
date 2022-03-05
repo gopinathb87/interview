@@ -1,0 +1,23 @@
+
+
+lis = [1,2,3,4,6,7,8,9]
+
+
+def bin_search(num, find_num, low, high,max=0):
+    
+    if high >= low:
+      mid = (low + high) // 2 
+      max = num[mid]
+      if num[mid] == find_num:
+        return mid
+      elif num[mid] < find_num:
+        low = mid + 1 
+        return bin_search(num,find_num,low, high,num[mid])
+      else:
+        high = mid -1
+        return bin_search(num,find_num,low, high,num[mid])
+    else:
+      return low
+
+
+print(bin_search(lis,5,0,8))
