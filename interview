@@ -1,0 +1,43 @@
+"""import re
+
+def reverseCharactersInString(string):
+    return "".join([tup[0][::-1] + tup[1] for tup in re.findall(r'([a-zA-Z]*)([^a-zA-Z]*)', string)])
+
+string = 'marvell@#123tech223#1022marvell'
+#op = llevram@#123hcet223#1022llevram
+
+print(reverseCharactersInString(string))
+
+def counted(f):
+    def wrapper(*args, **kwargs):
+        wrapper.calls += 1
+        rv = f(*args, **kwargs)
+        print(f"Called function {f.name} {wrapper.calls} times")
+        return rv
+    return wrapper
+
+#@counted
+def add(a,b):
+    print(a+b)
+
+#@counted
+def sub(a,b):
+    print(a-b)
+
+
+add(1,2) #--> add -> 1 time
+add(2,3) #--> add -> 2 times 
+add(3,4)
+sub(3,2) #--> sun -> 1 time
+sub(3,1)"""
+
+
+x = {"a":1,"b":2}
+y = {"c":3,"d":4}
+
+#y.update(x)
+
+print({**x, **y})
+
+
+
